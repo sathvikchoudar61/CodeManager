@@ -1,0 +1,13 @@
+spring.application.name=CodingManager
+spring.data.mongodb.host=localhost
+spring.data.mongodb.port=27017
+spring.data.mongodb.database=codingmanagerdb
+spring.data.mongodb.uri=mongodb://localhost:27017/codingmanager
+jwt.secret=
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=
+spring.mail.password=
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+client.url=http://localhost:5173

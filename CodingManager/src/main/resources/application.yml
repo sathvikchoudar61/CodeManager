@@ -1,0 +1,29 @@
+# Safe defaults — commit this file. Put secrets in application-local.yml (gitignored)
+# or set env vars: JWT_SECRET, MAIL_USERNAME, MAIL_PASSWORD
+
+spring:
+  application:
+    name: CodingManager
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: codingmanagerdb
+      uri: mongodb://localhost:27017/codingmanager
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+jwt:
+  secret: ${JWT_SECRET:CHANGE_ME}
+
+client:
+  url: ${CLIENT_URL:http://localhost:5173}

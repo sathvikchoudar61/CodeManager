@@ -1,0 +1,133 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: theme(colors.border);
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-canvas text-foreground font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    @apply bg-accent/25 text-foreground;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent/50 ring-offset-2 ring-offset-canvas;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply bg-surface border border-border rounded-xl;
+  }
+
+  .panel-elevated {
+    @apply bg-elevated border border-border rounded-xl;
+  }
+
+  .panel-interactive {
+    @apply bg-surface border border-border rounded-xl transition-all duration-200 hover:border-muted/60;
+  }
+
+  .kbd {
+    @apply inline-flex items-center justify-center min-w-[1.25rem] h-5 px-1.5 rounded text-[10px] font-medium bg-elevated border border-border text-muted;
+  }
+
+  .prose-dev h1,
+  .prose-dev h2,
+  .prose-dev h3 {
+    @apply text-foreground font-semibold tracking-tight;
+  }
+
+  .prose-dev h1 {
+    @apply text-2xl mb-4;
+  }
+
+  .prose-dev h2 {
+    @apply text-xl mb-3 mt-6;
+  }
+
+  .prose-dev h3 {
+    @apply text-base mb-2 mt-4;
+  }
+
+  .prose-dev p {
+    @apply text-muted text-sm leading-relaxed mb-3;
+  }
+
+  .prose-dev ul {
+    @apply list-disc list-inside text-muted text-sm space-y-1 mb-3;
+  }
+
+  .prose-dev code:not(pre code) {
+    @apply px-1.5 py-0.5 rounded bg-elevated border border-border text-accent text-[13px] font-mono;
+  }
+
+  .prose-dev a {
+    @apply text-accent hover:text-accent-hover underline-offset-2 hover:underline transition-colors;
+  }
+
+  .prose-dev blockquote {
+    @apply border-l-2 border-accent/40 pl-4 text-muted italic my-4;
+  }
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full hover:bg-muted transition-colors;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out forwards;
+  }
+
+  .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      theme(colors.elevated) 0%,
+      theme(colors.border) 50%,
+      theme(colors.elevated) 100%
+    );
+    background-size: 200% 100%;
+    @apply animate-shimmer;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
